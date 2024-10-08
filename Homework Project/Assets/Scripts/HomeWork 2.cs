@@ -9,6 +9,7 @@ public float moveSpeed = 5.0f;
 public Vector3 movementDirection = new Vector3(1f,0f,0f);
 public float jumpPower = 5.0f;
 
+ public float rotationSpeed = 100f;
 
  // Start is called before the first frame update
  void Start()
@@ -19,26 +20,33 @@ public float jumpPower = 5.0f;
     // Update is called once per frame
     void Update()
     { 
-        
-{
+       
+    movementDirection = new Vector3 (0,0,0);
     
-    if (Input.GetKeyDown(KeyCode.W)) transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-if (Input.GetKeyDown(KeyCode.D)) transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-if (Input.GetKeyDown(KeyCode.A)) transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-if (Input.GetKeyDown(KeyCode.Space)) transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-if (Input.GetKeyDown(KeyCode.DownArrow)) transform.position += Vector3.down * moveSpeed * Time.deltaTime;
-if (Input.GetKeyDown(KeyCode.S)) transform.position += new Vector3 (0,0,-1) * moveSpeed * Time.deltaTime;
+    if (Input.GetKey(KeyCode.W)) movementDirection += Vector3.forward;
+if (Input.GetKey(KeyCode.D)) movementDirection += Vector3.right;
+if (Input.GetKey(KeyCode.A)) movementDirection += Vector3.left;
+if (Input.GetKeyDown(KeyCode.Space))
+ 
+   {
+    Rigidbody myRigidbody = GetComponent<Rigidbody>();
+ myRigidbody.AddForce(new Vector3(0,1,0) * jumpPower);
 
-movementDirection = movementDirection + Vector3.forward;
-movementDirection = movementDirection + Vector3.right;
-movementDirection = movementDirection + Vector3.left;
-movementDirection = movementDirection + new Vector3 (0,0,-1);
+   } 
+if (Input.GetKey(KeyCode.S)) movementDirection += new Vector3 (0,0,-1);
 
-movementDirection = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
+ 
+ if (Input.GetKeyDown(KeyCode.Q))
+ {
+   transform.Rotate(new Vector3(0,15,0) * rotationSpeed * Time.deltaTime);
+   transform.Translate(movementDirection * moveSpeed * Time.deltaTime);
+ }
+ if (Input.GetKeyDown(KeyCode.E))
+ { transform.Rotate(new Vector3(0,-15,0) * rotationSpeed * Time.deltaTime);}
+//movementDirection = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
 transform.Translate(movementDirection * moveSpeed * Time.deltaTime);
 
 
     }
-   
-    }
+    
  }
