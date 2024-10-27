@@ -10,6 +10,7 @@ public Vector3 movementDirection = new Vector3(1f,0f,0f);
 public float jumpPower = 5.0f;
 
  public float rotationSpeed = 100f;
+ 
 
  // Start is called before the first frame update
  void Start()
@@ -26,25 +27,25 @@ public float jumpPower = 5.0f;
     if (Input.GetKey(KeyCode.W)) movementDirection += Vector3.forward;
 if (Input.GetKey(KeyCode.D)) movementDirection += Vector3.right;
 if (Input.GetKey(KeyCode.A)) movementDirection += Vector3.left;
-if (Input.GetKeyDown(KeyCode.Space))
- 
+if (Input.GetKey(KeyCode.S)) movementDirection += new Vector3 (0,0,-1);
+
+if (Input.GetKeyDown(KeyCode.Space)) 
    {
     Rigidbody myRigidbody = GetComponent<Rigidbody>();
  myRigidbody.AddForce(new Vector3(0,1,0) * jumpPower);
-
+   Debug.Log("In Air"); // Print "In Air" when jumping
    } 
-if (Input.GetKey(KeyCode.S)) movementDirection += new Vector3 (0,0,-1);
-
  
- if (Input.GetKeyDown(KeyCode.Q))
+ if (Input.GetKey(KeyCode.Q))
  {
-   transform.Rotate(new Vector3(0,15,0) * rotationSpeed * Time.deltaTime);
+   transform.Rotate(new Vector3(0,5,0) * rotationSpeed * Time.deltaTime);
    transform.Translate(movementDirection * moveSpeed * Time.deltaTime);
  }
- if (Input.GetKeyDown(KeyCode.E))
- { transform.Rotate(new Vector3(0,-15,0) * rotationSpeed * Time.deltaTime);}
+ if (Input.GetKey(KeyCode.E))
+ { transform.Rotate(new Vector3(0,-5,0) * rotationSpeed * Time.deltaTime);}
 //movementDirection = new Vector3(Input.GetAxis("Horizontal"),0,Input.GetAxis("Vertical"));
 transform.Translate(movementDirection * moveSpeed * Time.deltaTime);
+
 
 
     }
