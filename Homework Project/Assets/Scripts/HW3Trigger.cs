@@ -24,6 +24,8 @@ public class HW3Trigger : MonoBehaviour
             transform.position = newPosition; // Teleport to the new position
             Debug.Log("Teleported to: " + newPosition);
         }
+
+       
     }
 
     private void OnTriggerStay(Collider other)

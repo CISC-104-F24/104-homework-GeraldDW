@@ -8,35 +8,57 @@ public class HW3Jump : MonoBehaviour
 
   
   {
-    public float moveSpeed = 5f; // Speed of movement
-    private bool isMoving = false; // Flag to control movement
-
-    private void Update()
-    {
-        // Move the object forward if isMoving is true
-        if (isMoving)
-        {
-            transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-        }
-    }
+    public float moveDistance = 5f; // Distance to move on collision
+    public float moveSpeed = 2f; // Speed of the movement
+    private bool isMoving = false;
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Check if the colliding object is tagged as "Player"
-        if (collision.gameObject.CompareTag("Player"))
+        if (!isMoving) // Ensure we don't trigger multiple movements
         {
-            isMoving = true; // Start moving
-            Debug.Log("Object started moving forward");
+            Vector3 collisionNormal = collision.contacts[0].normal;
+            Vector3 movementDirection = DetermineMovementDirection(collisionNormal);
+            StartCoroutine(MoveInDirection(movementDirection));
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private Vector3 DetermineMovementDirection(Vector3 normal)
     {
-        // Stop moving when the player exits the collision
-        if (collision.gameObject.CompareTag("Player"))
+        // Move forward if hit from behind, left if hit from the right, and right if hit from the left
+        if (Vector3.Dot(normal, transform.forward) > 0) // Collided from behind
         {
-            isMoving = false; // Stop moving
-            Debug.Log("Object stopped moving");
+            return transform.forward;
         }
+        else if (Vector3.Dot(normal, -transform.right) > 0) // Collided from the right
+        {
+            return -transform.right; // Move left
+        }
+        else if (Vector3.Dot(normal, transform.right) > 0) // Collided from the left
+        {
+            return transform.right; // Move right
+        }
+        
+        return Vector3.zero; // No valid direction found
     }
+
+    private IEnumerator MoveInDirection(Vector3 direction)
+    {
+        isMoving = true;
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = startPosition + direction.normalized * moveDistance;
+
+        float journeyLength = Vector3.Distance(startPosition, targetPosition);
+        float startTime = Time.time;
+
+        while (Vector3.Distance(transform.position, targetPosition) > 0.01f)
+        {
+            float distCovered = (Time.time - startTime) * moveSpeed;
+            float fractionOfJourney = distCovered / journeyLength;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, fractionOfJourney);
+            yield return null; // Wait for the next frame
+        }
+
+        transform.position = targetPosition; // Ensure the final position is set
+        isMoving = false; // Reset the flag
+    }  
 }

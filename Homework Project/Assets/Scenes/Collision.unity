@@ -241,8 +241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enterColor: {r: 1, g: 0, b: 0, a: 1}
-  stayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  exitColor: {r: 0, g: 1, b: 0, a: 1}
+  stayColor: {r: 1, g: 0.5908441, b: 0.015686274, a: 1}
+  exitColor: {r: 1, g: 0, b: 0.5167899, a: 1}
 --- !u!1 &135754246
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,9 +512,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846a9a4cbb5404d4abd3448e29a03672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterColor: {r: 1, g: 0, b: 0, a: 1}
-  stayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  exitColor: {r: 0, g: 1, b: 0, a: 1}
+  enterColor: {r: 1, g: 0.0047169924, b: 0.0047169924, a: 1}
+  stayColor: {r: 1, g: 0.6440393, b: 0.015686274, a: 1}
+  exitColor: {r: 0, g: 0.70603323, b: 1, a: 1}
 --- !u!1 &175385866
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5166985556881275530, guid: 0dbc969c87e2b46c7a40af4533db868e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.919603
+      value: -40.4
       objectReference: {fileID: 0}
     - target: {fileID: 5166985556881275530, guid: 0dbc969c87e2b46c7a40af4533db868e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1031,9 +1031,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846a9a4cbb5404d4abd3448e29a03672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterColor: {r: 1, g: 0, b: 0, a: 1}
-  stayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  exitColor: {r: 0, g: 1, b: 0, a: 1}
+  enterColor: {r: 0, g: 1, b: 0.8317747, a: 1}
+  stayColor: {r: 0.98131055, g: 1, b: 0.015686274, a: 1}
+  exitColor: {r: 0.37058067, g: 0, b: 1, a: 1}
 --- !u!1 &554519470
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,7 +1729,7 @@ GameObject:
   - component: {fileID: 1254748929}
   - component: {fileID: 1254748928}
   - component: {fileID: 1254748927}
-  - component: {fileID: 1254748933}
+  - component: {fileID: 1254748932}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Bounced
@@ -1771,7 +1771,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254748926}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9f35d73b20d704c96acf10bcfb582c90, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1850,7 +1850,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1254748933
+--- !u!114 &1254748932
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1859,9 +1859,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1254748926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd329a49d67554186b01727a6a1966ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 846a9a4cbb5404d4abd3448e29a03672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enterColor: {r: 0.042452812, g: 1, b: 0.09034154, a: 1}
+  stayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  exitColor: {r: 0, g: 0.03742361, b: 1, a: 1}
 --- !u!1 &1351803813 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 517711807615977447, guid: 0dbc969c87e2b46c7a40af4533db868e, type: 3}
@@ -1985,6 +1988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7dc955572b6450eb6beb2f2576d92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveDistance: 5
   moveSpeed: 15
 --- !u!1 &1521140619
 GameObject:
@@ -2104,9 +2108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846a9a4cbb5404d4abd3448e29a03672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterColor: {r: 1, g: 0, b: 0, a: 1}
-  stayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  exitColor: {r: 0, g: 1, b: 0, a: 1}
+  enterColor: {r: 0.6981132, g: 0.36902744, b: 0.121840514, a: 1}
+  stayColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+  exitColor: {r: 0, g: 1, b: 0.46979713, a: 1}
 --- !u!1 &2055739324
 GameObject:
   m_ObjectHideFlags: 0

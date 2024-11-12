@@ -21,7 +21,6 @@ public class HW3Collision : MonoBehaviour
     {
         // Change color on collision enter
         objRenderer.material.color = enterColor;
-
         // Update score
         score++;
         Debug.Log("Score: " + score);
